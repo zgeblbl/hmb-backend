@@ -10,6 +10,8 @@ import com.hmb.backend.entity.UserPermission;
 import com.hmb.backend.repository.UserRepository;
 import com.hmb.backend.repository.UserPermissionRepository;
 
+
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -20,8 +22,6 @@ public class UserService {
     
     @Autowired
     private final UserPermissionRepository userPermissionRepository;
-
-    @Autowired
 
 
     public List<User> getAllUsers() {
@@ -79,12 +79,24 @@ public class UserService {
         Optional<User> user = userRepository.findUserByEmail(email);
 
         if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
+            User foundUser = user.get();
+            System.out.println("Veritabanındaki şifre: " + foundUser.getPassword());
+            System.out.println("Gelen şifre: " + password);
+
+            if (password.equals(foundUser.getPassword())) {
+                System.out.println("Şifre eşleşti, giriş başarılı.");
+                return ResponseEntity.ok("Sign-in successful"); // Giriş başarılı
+            } else {
+                System.out.println("Şifre eşleşmiyor.");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            }
         } else {
+            System.out.println("Kullanıcı bulunamadı.");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
     }
-    
+
+
 
     public ResponseEntity<?> getUserPermissions(Long userId) {
         List<UserPermission> permissions = userRepository.getUserPermissions(userId);
