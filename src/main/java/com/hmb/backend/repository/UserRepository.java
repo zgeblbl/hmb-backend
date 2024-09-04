@@ -26,18 +26,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.password = :newPassword WHERE u.id = :userId AND u.isUserDeleted = false")
+    @Query("UPDATE User u SET u.password = :newPassword WHERE u.userId = :userId AND u.isUserDeleted = false")
     int updatePassword(Long userId, String newPassword);
 
     @Modifying
     @Transactional
     @Query("UPDATE User u SET u.firstName = :firstName, u.lastName = :lastName, u.TCKN = :TCKN, u.email = :email, " +
-           "u.department = :department, u.title = :title WHERE u.id = :userId AND u.isUserDeleted = false")
+           "u.department = :department, u.title = :title WHERE u.userId = :userId AND u.isUserDeleted = false")
     int updateUser(Long userId, String firstName, String lastName, Long TCKN, String email, Department department, Title title);
 
     @Modifying
     @Transactional
-    @Query("UPDATE User u SET u.isUserDeleted = true WHERE u.id = :userId")
+    @Query("UPDATE User u SET u.isUserDeleted = true WHERE u.userId = :userId")
     int softDeleteUser(Long userId);
 
     @Query("SELECT u FROM User u WHERE u.email = :email AND u.isUserDeleted = false")

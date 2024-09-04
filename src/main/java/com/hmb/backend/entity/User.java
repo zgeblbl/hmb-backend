@@ -18,20 +18,20 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Long userId; 
+    @Column(name = "id")
+    private Long userId;
 
-    @Column(name = "name")
+    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "surname")
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "TCKN")
+    @Column(name = "tckn")
     private Long TCKN;
 
     @Column(name = "email")
@@ -41,7 +41,7 @@ public class User {
     private String password;
 
     @Column(name = "deleted")
-    private boolean isUserDeleted;
+    private boolean isUserDeleted= false;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "department_id", insertable = true, updatable = true)

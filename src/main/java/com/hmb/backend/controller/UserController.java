@@ -32,7 +32,7 @@ public class UserController {
     }
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody UserRequestDTO loginRequest) {
-        return userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());
+        return userService.authenticateUser(loginRequest.getEmail(), loginRequest.getPassword());
     }
 
 

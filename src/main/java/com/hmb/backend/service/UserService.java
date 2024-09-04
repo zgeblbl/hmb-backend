@@ -21,9 +21,6 @@ public class UserService {
     @Autowired
     private final UserPermissionRepository userPermissionRepository;
 
-    @Autowired
-
-
     public List<User> getAllUsers() {
         return userRepository.findAllUsers();
     }
@@ -77,14 +74,24 @@ public class UserService {
 
     public ResponseEntity<?> authenticateUser(String email, String password) {
         Optional<User> user = userRepository.findUserByEmail(email);
-    
-        if (user.isEmpty() || !password.matches(user.get().getPassword())) {
-            return new ResponseEntity<>("Invalid email or password!", HttpStatus.UNAUTHORIZED);
+
+        if (user.isPresent()) {
+            User foundUser = user.get();
+            System.out.println("Veritabanındaki şifre: " + foundUser.getPassword());
+            System.out.println("Gelen şifre: " + password);
+
+            if (password.equals(foundUser.getPassword())) {
+                System.out.println("Şifre eşleşti, giriş başarılı.");
+                return ResponseEntity.ok("Sign-in successful"); // Giriş başarılı
+            } else {
+                System.out.println("Şifre eşleşmiyor.");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            }
+        } else {
+            System.out.println("Kullanıcı bulunamadı.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
-    
-        return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
-    
 
     public ResponseEntity<?> getUserPermissions(Long userId) {
         List<UserPermission> permissions = userRepository.getUserPermissions(userId);
