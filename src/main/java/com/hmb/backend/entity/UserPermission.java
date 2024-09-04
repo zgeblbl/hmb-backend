@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Permissions")
+@Table(name = "permissions")
 public class UserPermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +50,7 @@ public class UserPermission {
     private boolean isPermissionDeleted;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", insertable = true, updatable = true)
+    @JoinColumn(name = "id", insertable = true, updatable = true)
     private User user;
     
     public enum PermissionType {
