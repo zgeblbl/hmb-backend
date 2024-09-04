@@ -77,12 +77,12 @@ public class UserService {
 
     public ResponseEntity<?> authenticateUser(String email, String password) {
         Optional<User> user = userRepository.findUserByEmail(email);
-    
-        if (user.isEmpty() || !password.matches(user.get().getPassword())) {
-            return new ResponseEntity<>("Invalid email or password!", HttpStatus.UNAUTHORIZED);
+
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
         }
-    
-        return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
     
 

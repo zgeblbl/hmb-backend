@@ -5,7 +5,6 @@ com\hmb\backend\service\UserPermissionService.class
 com\hmb\backend\entity\Department.class
 com\hmb\backend\repository\UserPermissionRepository.class
 com\hmb\backend\repository\UserRepository.class
-com\hmb\backend\controller\DenemeController.class
 com\hmb\backend\controller\UserPermissionController.class
 com\hmb\backend\entity\Title.class
 com\hmb\backend\entity\User.class
