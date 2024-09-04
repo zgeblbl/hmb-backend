@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\hmb\backend\controller\TitleController.class
 com\hmb\backend\entity\UserPermission.class
 com\hmb\backend\controller\DepartmentController.class
@@ -18,3 +19,26 @@ com\hmb\backend\service\DepartmentService.class
 com\hmb\backend\service\TitleService.class
 com\hmb\backend\WebConfig.class
 com\hmb\backend\service\UserService.class
+=======
+com/hmb/backend/repository/UserPermissionRepository.class
+com/hmb/backend/service/UserPermissionService.class
+com/hmb/backend/entity/UserPermission.class
+com/hmb/backend/controller/UserController.class
+com/hmb/backend/controller/DepartmentController.class
+com/hmb/backend/service/TitleService.class
+com/hmb/backend/entity/Department.class
+com/hmb/backend/controller/TitleController.class
+com/hmb/backend/controller/UserPermissionController.class
+com/hmb/backend/controller/dto/UserRequestDTO.class
+com/hmb/backend/repository/DepartmentRepository.class
+com/hmb/backend/controller/DenemeController.class
+com/hmb/backend/repository/TitleRepository.class
+com/hmb/backend/entity/UserPermission$PermissionType.class
+com/hmb/backend/entity/User.class
+com/hmb/backend/WebConfig.class
+com/hmb/backend/entity/Title.class
+com/hmb/backend/service/DepartmentService.class
+com/hmb/backend/repository/UserRepository.class
+com/hmb/backend/ProjectApplication.class
+com/hmb/backend/service/UserService.class
+>>>>>>> origin/deveda

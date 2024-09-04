@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\controller\TitleController.java
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\entity\User.java
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\controller\UserController.java
@@ -17,3 +18,25 @@ C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\rep
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\service\UserService.java
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\service\DepartmentService.java
 C:\Users\zgebl\OneDrive\Masaüstü\hmb-backend\src\main\java\com\hmb\backend\service\TitleService.java
+=======
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/service/DepartmentService.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/entity/User.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/TitleController.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/service/UserService.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/entity/UserPermission.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/service/UserPermissionService.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/repository/UserRepository.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/repository/TitleRepository.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/repository/UserPermissionRepository.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/ProjectApplication.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/repository/DepartmentRepository.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/DepartmentController.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/WebConfig.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/service/TitleService.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/dto/UserRequestDTO.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/entity/Department.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/entity/Title.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/DenemeController.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/UserPermissionController.java
+/Users/edaeylul/Desktop/hmb-backend/src/main/java/com/hmb/backend/controller/UserController.java
+>>>>>>> origin/deveda
