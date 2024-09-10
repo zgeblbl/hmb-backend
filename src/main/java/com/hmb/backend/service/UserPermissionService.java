@@ -25,9 +25,16 @@ public class UserPermissionService {
     }
 
     public ResponseEntity<UserPermission> addPermission(UserPermission newPermission) {
-        UserPermission createdPermission = userPermissionRepository.save(newPermission);
-        return new ResponseEntity<>(createdPermission, HttpStatus.CREATED);
+        try {
+            UserPermission savedPermission = userPermissionRepository.save(newPermission);
+            return new ResponseEntity<>(savedPermission, HttpStatus.OK);
+        } catch (Exception e) {
+            // Hata loglama ve anlamlı hata mesajı döndürme
+            System.out.println("Error adding permission: " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 
     public ResponseEntity<?> getPermission(Long permissionId) {
         Optional<UserPermission> permission = userPermissionRepository.findByIdAndNotDeleted(permissionId);

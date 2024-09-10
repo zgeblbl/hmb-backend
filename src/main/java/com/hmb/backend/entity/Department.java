@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Department {
     @Column(name = "deleted")
     private boolean isDepartmentDeleted;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private List<User> users;
 }

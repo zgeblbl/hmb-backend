@@ -1,9 +1,5 @@
 package com.hmb.backend.entity;
-
-
-
 import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,35 +25,35 @@ import lombok.NoArgsConstructor;
 public class UserPermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "permission_id")
+    @Column(name = "user_permission_id")
     private Long userPermissionId;
 
-    @Column(name = "permission_start")
+    @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "permission_end")
+    @Column(name = "end_date")
     private Date endDate;
 
-    @Column(name = "approved")
+    @Column(name = "is_permission_approved")
     private boolean isPermissionApproved;
 
     @Column(name = "approval_date")
     private Date approvalDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "approval_type")
-    private PermissionType permissionType;
-
-    @Column(name = "deleted")
+    @Column(name = "is_permission_deleted")
     private boolean isPermissionDeleted;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id", insertable = true, updatable = true)
     private User user;
-    
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "permission_type")
+    private PermissionType permissionType;
     public enum PermissionType {
         ANNUAL,
-        COMPASSIONATE,
-        SICK
+        SICK,
+        MATERNITY,
+        EXCUSE_LEAVE
     }
 }

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +33,7 @@ public class Title {
     @Column(name = "deleted")
     private boolean isTitleDeleted;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "title", fetch = FetchType.LAZY)
     private List<User> users;
 }
