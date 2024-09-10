@@ -103,4 +103,13 @@ public class UserController {
     public ResponseEntity<?> addPermissionToUser(@PathVariable Long id, @RequestBody UserPermission newPermission) {
         return userService.addPermissionToUser(id, newPermission);
     }
+
+    @PutMapping("/changePassword/{id}")
+    public ResponseEntity<?> changePassword(@PathVariable Long id, @RequestBody Map<String, String> passwords) {
+        String currentPassword = passwords.get("currentPassword");
+        String newPassword = passwords.get("newPassword");
+
+        return userService.changeUserPassword(id, currentPassword, newPassword);
+    }
+
 }

@@ -125,4 +125,26 @@ public class UserService {
     public List<User> searchUsers(Long TCKN, String firstName, String lastName) {
         return userRepository.findByQuery(TCKN, firstName, lastName);
     }
+
+    public ResponseEntity<?> changeUserPassword(Long userId, String currentPassword, String newPassword) {
+        Optional<User> userOpt = userRepository.findById(userId);
+
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+
+            // Mevcut şifre kontrolü
+            if (!user.getPassword().equals(currentPassword)) {
+                return new ResponseEntity<>("Current password is incorrect!", HttpStatus.BAD_REQUEST);
+            }
+
+            // Şifre güncelleme
+            user.setPassword(newPassword);  // Şifreyi güncellerken şifreleme eklenebilir
+            userRepository.save(user);
+
+            return new ResponseEntity<>("Password changed successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User not found!", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
