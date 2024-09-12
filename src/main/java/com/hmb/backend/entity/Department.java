@@ -26,7 +26,5 @@ public class Department {
     @Column(name = "deleted")
     private boolean isDepartmentDeleted;
 
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<User> users;
+
 }

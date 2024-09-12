@@ -2,15 +2,19 @@ package com.hmb.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor // Parametresiz constructor otomatik olarak eklenir
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +24,6 @@ public class Message {
     private String email;
     private String messageContent;
 
-    public Message() {}
-
-    public Message(String name, String email, String messageContent) {
-        this.name = name;
-        this.email = email;
-        this.messageContent = messageContent;
-    }
-
-    // Getters and Setters
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt = new Date(); // Mesaj oluşturulurken tarih otomatik olarak atanacak
 }

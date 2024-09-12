@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,12 +47,12 @@ public class User {
     private boolean isUserDeleted= false;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonIgnore
+    @JsonProperty("department")
     @JoinColumn(name = "department_id", insertable = true, updatable = true)
     private Department department;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JsonIgnore
+    @JsonProperty("title")
     @JoinColumn(name = "title_id", insertable = true, updatable = true)
     private Title title;
 

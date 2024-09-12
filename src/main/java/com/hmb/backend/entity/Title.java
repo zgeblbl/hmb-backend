@@ -33,7 +33,5 @@ public class Title {
     @Column(name = "deleted")
     private boolean isTitleDeleted;
 
-    @OneToMany(mappedBy = "title", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<User> users;
+
 }

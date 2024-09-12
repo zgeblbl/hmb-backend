@@ -26,6 +26,14 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
+    @PutMapping("/changePassword/{id}")
+    public ResponseEntity<?> changePassword(@PathVariable Long id, @RequestBody Map<String, String> passwords) {
+        String currentPassword = passwords.get("currentPassword");
+        String newPassword = passwords.get("newPassword");
+
+        return userService.changeUserPassword(id, currentPassword, newPassword);
+    }
+
     @PostMapping("/search")
     public ResponseEntity<List<User>> searchUsers(@RequestBody Map<String, Object> searchParams) {
         System.out.println("Incoming Request: " + searchParams);
