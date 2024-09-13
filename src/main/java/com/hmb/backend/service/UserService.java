@@ -133,7 +133,7 @@ public class UserService {
             User foundUser = user.get();
             if (password.equals(foundUser.getPassword())) {
                 // Kullanıcının adını ve soyadını döndürüyoruz
-                UserResponseDTO responseDTO = new UserResponseDTO(foundUser.getFirstName(), foundUser.getLastName(), foundUser.getUserId(), foundUser.getTitle().getTitleId());
+                UserResponseDTO responseDTO = new UserResponseDTO(foundUser.getFirstName(), foundUser.getLastName(), foundUser.getUserId(), foundUser.getTitle().getTitleId(), foundUser.getDepartment().getDepartmentId());
                 return ResponseEntity.ok(responseDTO);  // Yanıtı JSON formatında döndürür
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
