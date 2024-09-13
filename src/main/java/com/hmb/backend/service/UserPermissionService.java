@@ -38,6 +38,16 @@ public class UserPermissionService {
 
         return new ResponseEntity<>(permission.get(), HttpStatus.OK);
     }
+    public List<UserPermission> getPermissionsByDepartmentId(Long departmentId) {
+        try {
+            List<UserPermission> permissions = userPermissionRepository.findPermissionsByDepartmentId(departmentId);
+            System.out.println("Permissions fetched: " + permissions);
+            return permissions;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error fetching permissions", e);
+        }
+    }
 
     public ResponseEntity<?> updatePermission(UserPermission updatedPermission, Long permissionId) {
         Optional<UserPermission> existingPermission = userPermissionRepository.findByIdAndNotDeleted(permissionId);
@@ -66,6 +76,16 @@ public class UserPermissionService {
 
         if (rowsAffected == 0) {
             return new ResponseEntity<>("Permission not found or already approved!", HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> declinePermission(Long permissionId) {
+        int rowsAffected = userPermissionRepository.declinePermission(permissionId);
+
+        if (rowsAffected == 0) {
+            return new ResponseEntity<>("Permission not found or already declined!", HttpStatus.BAD_REQUEST);
         }
 
         return new ResponseEntity<>(HttpStatus.OK);

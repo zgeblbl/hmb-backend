@@ -27,6 +27,16 @@ public class UserPermissionController {
         List<UserPermission> permissions = userPermissionService.getPermissionsByUserId(userId);
         return new ResponseEntity<>(permissions, HttpStatus.OK);
     }
+    @GetMapping("/getDepartmentPermissions/{departmentId}")
+    public ResponseEntity<List<UserPermission>> getPermissionsByDepartmentId(@PathVariable Long departmentId) {
+        try {
+            List<UserPermission> permissions = userPermissionService.getPermissionsByDepartmentId(departmentId);
+            return new ResponseEntity<>(permissions, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @GetMapping("/getPermission/{id}")
     public ResponseEntity<?> getPermission(@PathVariable Long id) {
@@ -48,8 +58,8 @@ public class UserPermissionController {
         return userPermissionService.approvePermission(id);
     }
 
-    @DeleteMapping("/deletePermission/{id}")
-    public ResponseEntity<?> removePermission(@PathVariable Long id) {
-        return userPermissionService.softDeletePermission(id);
+    @PatchMapping("/declinePermission/{id}")
+    public ResponseEntity<?> declinePermission(@PathVariable Long id) {
+        return userPermissionService.declinePermission(id);
     }
 }
