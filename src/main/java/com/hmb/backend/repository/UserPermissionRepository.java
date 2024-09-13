@@ -19,7 +19,7 @@ public interface UserPermissionRepository extends JpaRepository<UserPermission, 
     @Query("SELECT up FROM UserPermission up WHERE up.user.userId = :userId AND up.isPermissionDeleted = false")
     List<UserPermission> findPermissionsByUserId(Long userId);
 
-    @Query("SELECT up FROM UserPermission up WHERE up.user.department.departmentId = :departmentId AND up.isPermissionDeleted = false")
+    @Query("SELECT up FROM UserPermission up WHERE up.user.department.departmentId = :departmentId AND up.isPermissionDeleted = false AND up.isPermissionApproved = false")
     List<UserPermission> findPermissionsByDepartmentId(Long departmentId);
 
     @Query("SELECT up FROM UserPermission up WHERE up.userPermissionId = :permissionId AND up.isPermissionDeleted = false")
