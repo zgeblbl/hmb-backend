@@ -36,8 +36,14 @@ public class UserPermission {
     @Column(name = "end_date")
     private Date endDate;
 
-    @Column(name = "is_permission_approved")
-    private boolean isPermissionApproved;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "approval")
+    private PermissionApproval permissionApproval;
+    public enum PermissionApproval {
+        APPROVED,
+        PENDING,
+        DECLINED
+    }
 
     @Column(name = "approval_date")
     private Date approvalDate;

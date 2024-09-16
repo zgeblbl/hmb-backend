@@ -57,11 +57,11 @@ public class UserPermissionService {
         }
 
         int rowsAffected = userPermissionRepository.updatePermission(
-            permissionId, 
-            updatedPermission.getStartDate(), 
-            updatedPermission.getEndDate(), 
-            updatedPermission.getPermissionType(), 
-            updatedPermission.isPermissionApproved()
+            permissionId,
+            updatedPermission.getStartDate(),
+            updatedPermission.getEndDate(),
+            updatedPermission.getPermissionType(),
+            updatedPermission.getPermissionApproval()
         );
 
         if (rowsAffected == 0) {

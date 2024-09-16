@@ -45,20 +45,16 @@ public class UserService {
             // Fetch the Department and Title entities by ID
             Department department = departmentRepository.findById(newUser.getDepartment().getDepartmentId()).orElse(null);
             Title title = titleRepository.findById(newUser.getTitle().getTitleId()).orElse(null);
-
             // Ensure Department and Title are found
             if (department == null || title == null) {
                 throw new IllegalArgumentException("Invalid department or title.");
             }
-
             // Set the fetched Department and Title to the newUser
             newUser.setDepartment(department);
             newUser.setTitle(title);
-
             // Optionally handle password hashing
             newUser.setPassword(newUser.getPassword());
             newUser.getDepartment().setDepartmentId(newUser.getDepartment().getDepartmentId());
-
             // Save the user
             return userRepository.save(newUser);
         } catch (Exception e) {
@@ -66,7 +62,6 @@ public class UserService {
             throw e; // Handle the exception as needed
         }
     }
-
 
     public ResponseEntity<?> updateUser(User updatedUser, Long id) {
         int rowsAffected = userRepository.updateUser(
@@ -133,7 +128,7 @@ public class UserService {
             User foundUser = user.get();
             if (password.equals(foundUser.getPassword())) {
                 // Kullanıcının adını ve soyadını döndürüyoruz
-                UserResponseDTO responseDTO = new UserResponseDTO(foundUser.getFirstName(), foundUser.getLastName(), foundUser.getUserId(), foundUser.getTitle().getTitleId(), foundUser.getDepartment().getDepartmentId());
+                UserResponseDTO responseDTO = new UserResponseDTO(foundUser.getFirstName(), foundUser.getLastName(), foundUser.getUserId(), foundUser.getTitle().getTitleId(), foundUser.getDepartment().getDepartmentId(), foundUser.getEmail());
                 return ResponseEntity.ok(responseDTO);  // Yanıtı JSON formatında döndürür
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
@@ -174,7 +169,13 @@ public class UserService {
         return "";
     }
 
-    public List<User> searchUsers(Long TCKN, String firstName, String lastName) {
-        return userRepository.findByQuery(TCKN, firstName, lastName);
+    public List<User> searchUsers(Long TCKN, String firstName, String lastName, Long titleId, Long departmentId) {
+        if (titleId == 7) {
+            // Admin - can search all users
+            return userRepository.findByQuery(TCKN, firstName, lastName);
+        } else {
+            // Non-admin - restrict search to the same department
+            return userRepository.findByQueryInDepartment(TCKN, firstName, lastName, departmentId);
+        }
     }
 }

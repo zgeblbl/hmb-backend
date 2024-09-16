@@ -50,8 +50,15 @@ public class UserController {
         String lastName = (searchParams.get("lastName") != null && !searchParams.get("lastName").toString().isEmpty())
                 ? searchParams.get("lastName").toString()
                 : null;
+
+        Long titleId = (searchParams.get("usertitleId") != null && !searchParams.get("usertitleId").toString().isEmpty())
+                ? Long.valueOf(searchParams.get("usertitleId").toString())
+                : null;
+        Long departmentId = (searchParams.get("userdepartmentId") != null && !searchParams.get("userdepartmentId").toString().isEmpty())
+                ? Long.valueOf(searchParams.get("userdepartmentId").toString())
+                : null;
         // Kullanıcıları bulma
-        List<User> users = userService.searchUsers(TCKN, firstName, lastName);
+        List<User> users = userService.searchUsers(TCKN, firstName, lastName, titleId, departmentId);
         if (users.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

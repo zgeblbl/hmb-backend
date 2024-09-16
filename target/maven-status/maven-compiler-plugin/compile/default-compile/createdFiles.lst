@@ -19,6 +19,7 @@ com\hmb\backend\entity\User.class
 com\hmb\backend\controller\dto\UserRequestDTO.class
 com\hmb\backend\repository\MessageRepository.class
 com\hmb\backend\repository\TitleRepository.class
+com\hmb\backend\entity\UserPermission$PermissionApproval.class
 com\hmb\backend\service\MessageService.class
 com\hmb\backend\service\DepartmentService.class
 com\hmb\backend\service\TitleService.class

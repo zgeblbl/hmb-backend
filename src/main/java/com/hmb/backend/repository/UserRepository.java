@@ -57,5 +57,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "AND u.isUserDeleted = false")
     List<User> findByQuery(Long TCKN, String firstName, String lastName);
 
+    @Query("SELECT u FROM User u WHERE " +
+            "(CAST(u.TCKN AS string) LIKE CONCAT(:TCKN, '%') OR :TCKN IS NULL) " +
+            "AND (:firstName IS NULL OR LOWER(u.firstName) LIKE CONCAT(LOWER(:firstName), '%')) " +
+            "AND (:lastName IS NULL OR LOWER(u.lastName) LIKE CONCAT(LOWER(:lastName), '%')) " +
+            "AND u.isUserDeleted = false " +  // Added a space at the end
+            "AND u.department.departmentId = :departmentId")
+    List<User> findByQueryInDepartment(Long TCKN, String firstName, String lastName, Long departmentId);
+
 
 }

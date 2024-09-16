@@ -15,5 +15,6 @@ public class UserResponseDTO {
     private Long userId;
     private Long titleId;
     private Long departmentId;
+    private String email;
 
 }
